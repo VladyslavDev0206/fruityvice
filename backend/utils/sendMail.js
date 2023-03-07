@@ -14,6 +14,7 @@ let transporter = nodemailer.createTransport({
 
 
 const sendMail = async (newFruitsString) => {
+  console.log("new fruits:" + newFruitsString);
   let result = await transporter.sendMail({
     from: '"Node js" <nodejs@example.com>',
     to: 'adrianwee45@gmail.com, adrianwee45@gmail.com',
@@ -22,7 +23,6 @@ const sendMail = async (newFruitsString) => {
     html:
       'This <i>message</i> was sent from <strong>Fruityvice.com</strong> server.',
   })
-
   console.log("mail result : ", result)
 }
 
