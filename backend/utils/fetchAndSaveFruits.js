@@ -30,10 +30,9 @@ const fetchAndSaveFruits = async () =>{
         })
         newFruit.save();
       }
-
-      // send mail about new fruits
-      sendMail();
     });
+    // send mail about new fruits
+    sendMail();
   } catch (error) {
     console.log(error);
   }
