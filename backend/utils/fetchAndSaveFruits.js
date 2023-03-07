@@ -8,7 +8,8 @@ const fetchAndSaveFruits = async () =>{
     const axiosFruits = axios.create();
     const response = await axiosFruits.get(baseURI + "api/fruit/all");
     const fruits = response.data;
-  
+    let newFruitsCount = 0;
+    let newFruitsString = '';
     // iterate the fruits fetched
     fruits.forEach(async fruit => {
       const existingFruit = await Fruits.findAll({
@@ -29,10 +30,13 @@ const fetchAndSaveFruits = async () =>{
           sugar: fruit.nutritions.sugar,
         })
         newFruit.save();
+        newFruitsCount ++;
+        newFruitsString += ' ' + fruit.name;
       }
     });
     // send mail about new fruits
-    sendMail();
+    if(newFruitsCount)
+      sendMail(newFruitsString);
   } catch (error) {
     console.log(error);
   }

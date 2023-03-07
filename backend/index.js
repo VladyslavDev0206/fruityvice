@@ -20,6 +20,4 @@ app.use(router);
 // Execute the cron job
 initScheduledJobs();
 
-sendMail();
-
 app.listen(5000, () => console.log('Server running at port 5000'));
