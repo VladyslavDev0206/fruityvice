@@ -6,6 +6,7 @@ import router from "./routes/index.js";
 import { urlencoded } from "express";
 
 import { initScheduledJobs } from "./scheduledFunctions/fetchFruits.js";
+import sendMail from "./utils/sendMail.js";
 
 dotenv.config();
 const app = express();
@@ -18,5 +19,7 @@ app.use(router);
 
 // Execute the cron job
 initScheduledJobs();
+
+sendMail();
 
 app.listen(5000, () => console.log('Server running at port 5000'));
