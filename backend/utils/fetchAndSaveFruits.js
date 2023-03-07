@@ -29,13 +29,15 @@ const fetchAndSaveFruits = async () =>{
           calories: fruit.nutritions.calories,
           sugar: fruit.nutritions.sugar,
         })
-        newFruit.save();
+        await newFruit.save();
         newFruitsCount ++;
         newFruitsString += ' ' + fruit.name;
       }
     });
     // send mail about new fruits
-    if(newFruitsCount)
+    if(newFruitsCount){
+
+    }
       sendMail(newFruitsString);
   } catch (error) {
     console.log(error);
