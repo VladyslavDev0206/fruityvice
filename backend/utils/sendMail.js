@@ -1,26 +1,19 @@
 import nodemailer from "nodemailer"
 
-let testEmailAccount = await nodemailer.createTestAccount()
-
 let transporter = nodemailer.createTransport({
-  host: 'smtp.ethereal.email',
-  port: 587,
-  secure: false,
+  service: "Gmail",
   auth: {
-    user: testEmailAccount.user,
-    pass: testEmailAccount.pass,
+    user: "adrianwee45@gmail.com",
+    pass: "Kim!!!11",
   },
 })
 
-
 const sendMail = async () => {
   let result = await transporter.sendMail({
-    from: '"Node js" <nodejs@example.com>',
+    from: 'adrianwee45@gmail.com',
     to: 'adrianwee45@gmail.com',
     subject: 'Message from Fruityvice.com',
     text: 'New fruits are added',
-    html:
-      'This <i>message</i> was sent from <strong>Fruityvice.com</strong> server.',
   })
 
   console.log("mail result : ", result)
